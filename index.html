@@ -8,8 +8,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link href="https://fonts.cdnfonts.com/css/segoe-ui-4" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/dancing-script" rel="stylesheet" />
     <style>
+      /* Import fonts for both Thai and English text */
+      @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Noto+Sans+Thai:wght@400;700&display=swap');
+
       * {
         margin: 0;
         padding: 0;
@@ -17,12 +20,12 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Dancing Script", cursive; /* English text will use Dancing Script */
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+        background: linear-gradient(45deg, #ffb3b3, #f1c6c6); /* Pastel gradient */
         padding: 20px;
         perspective: 1000px;
       }
@@ -34,6 +37,8 @@
         cursor: pointer;
         transform-style: preserve-3d;
         transition: transform 1s;
+        border-radius: 15px; /* Rounded edges */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       }
 
       .card-container.opened {
@@ -46,8 +51,7 @@
         width: 100%;
         height: 100%;
         backface-visibility: hidden;
-        border-radius: 20px;
-        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -59,7 +63,7 @@
 
       .card-back {
         transform: rotateY(180deg);
-        background: linear-gradient(135deg, #fff5f5 0%, #ffe9e9 100%);
+        background: linear-gradient(135deg, #ffe0e0, #f7c5c5);
         display: flex;
         flex-direction: row;
         position: absolute;
@@ -114,22 +118,35 @@
 
       .heart-icon {
         font-size: 4rem;
-        color: #ff4d6d;
+        color: #ff6699;
         animation: pulse 1.5s infinite;
         margin-bottom: 20px;
       }
 
       .card-text {
+        font-family: "Dancing Script", cursive;
         text-align: center;
-        color: #ff4d6d;
-        font-size: 1.5rem;
+        color: #ff6699;
+        font-size: 1.8rem;
         margin-bottom: 20px;
         font-weight: bold;
+        animation: bounce 2s infinite;
+      }
+
+      /* Adjust font style for Thai text */
+      .card-text-thai {
+        font-family: 'Noto Sans Thai', sans-serif; /* Thai text uses Noto Sans Thai */
+        text-align: center;
+        color: #ff6699;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        font-weight: normal; /* Use normal weight for Thai text */
+        line-height: 1.5; /* Adjust line height for better readability */
       }
 
       .click-hint {
-        font-size: 0.9rem;
-        color: #666;
+        font-size: 1.2rem;
+        color: #777;
         position: absolute;
         bottom: 20px;
         animation: bounce 2s infinite;
@@ -156,7 +173,7 @@
         }
 
         50% {
-          transform: scale(1.1);
+          transform: scale(1.2);
         }
 
         100% {
@@ -211,23 +228,26 @@
       }
 
       .message-title {
-        font-size: 1.8rem;
-        color: #ff4d6d;
+        font-family: "Dancing Script", cursive;
+        font-size: 2rem;
+        color: #ff6699;
         margin-bottom: 15px;
         font-weight: bold;
       }
 
       .message-body {
-        font-size: 1rem;
+        font-family: 'Noto Sans Thai', sans-serif;
+        font-size: 1.2rem;
         color: #666;
         line-height: 1.5;
         margin-bottom: 20px;
       }
 
       .love-signature {
+        font-family: "Dancing Script", cursive;
         font-style: italic;
-        color: #ff4d6d;
-        font-size: 1.2rem;
+        color: #ff6699;
+        font-size: 1.5rem;
       }
 
       .audio-controls {
@@ -247,8 +267,8 @@
         background: none;
         border: none;
         cursor: pointer;
-        color: #ff4d6d;
-        font-size: 1.5rem;
+        color: #ff6699;
+        font-size: 1.8rem;
         padding: 5px;
         transition: transform 0.2s;
       }
@@ -261,7 +281,7 @@
         width: 100px;
         cursor: pointer;
         background: transparent;
-        accent-color: #ff4d6d;
+        accent-color: #ff6699;
       }
 
       /* Responsive Design for smaller devices */
@@ -272,7 +292,6 @@
         }
       }
 
-      /* iPhone XS Max and smaller screens (portrait and landscape) */
       @media (max-width: 768px) {
         .card-container {
           width: 320px;
@@ -301,7 +320,6 @@
         }
       }
 
-      /* iPad Air 3 */
       @media (max-width: 820px) {
         .card-container {
           width: 375px;
@@ -349,7 +367,7 @@
     </div>
 
     <audio id="bgMusic" loop>
-      <source src="songs/valentine_12.mp3" type="audio/mpeg" />
+      <source src="songs/valentine_1.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
 
